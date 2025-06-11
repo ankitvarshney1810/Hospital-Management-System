@@ -86,17 +86,56 @@ function generate_bill(){
   $query=mysqli_query($con,"select p.pid,p.ID,p.fname,p.lname,p.doctor,p.appdate,p.apptime,p.disease,p.allergy,p.prescription,a.docFees from prestb p inner join appointmenttb a on p.ID=a.ID and p.pid = '$pid' and p.ID = '".$_GET['ID']."'");
   while($row = mysqli_fetch_array($query)){
     $output .= '
-    <label> Patient ID : </label>'.$row["pid"].'<br/><br/>
-    <label> Appointment ID : </label>'.$row["ID"].'<br/><br/>
-    <label> Patient Name : </label>'.$row["fname"].' '.$row["lname"].'<br/><br/>
-    <label> Doctor Name : </label>'.$row["doctor"].'<br/><br/>
-    <label> Appointment Date : </label>'.$row["appdate"].'<br/><br/>
-    <label> Appointment Time : </label>'.$row["apptime"].'<br/><br/>
-    <label> Disease : </label>'.$row["disease"].'<br/><br/>
-    <label> Allergies : </label>'.$row["allergy"].'<br/><br/>
-    <label> Prescription : </label>'.$row["prescription"].'<br/><br/>
-    <label> Fees Paid : </label>'.$row["docFees"].'<br/>
-    
+    <table border="2" cellpadding="8">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" bgcolor="grey">Heading</th>
+          <th scope="col" bgcolor="grey">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Patient ID :</th>
+          <td>'.$row["pid"].'</td>
+        </tr>
+        <tr>
+          <th scope="row">Appointment ID :</th>
+          <td>'.$row["ID"].'</td>
+        </tr>
+        <tr>
+          <th scope="row">Patient Name :</th>
+          <td>'.$row["fname"].' '.$row["lname"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Doctor Name : </th>
+          <td>'.$row["doctor"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Appointment Date : </th>
+          <td>'.$row["appdate"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Appointment Time : </th>
+          <td>'.$row["apptime"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Disease : </th>
+          <td>'.$row["disease"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Allergies : </th>
+          <td>'.$row["allergy"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Prescription : </th>
+          <td>'.$row["prescription"].'</td>
+        </tr>
+        <tr>
+          <th scope="row"> Fees Paid : </th>
+          <td>'.$row["docFees"].'</td>
+        </tr>
+      </tbody>
+    </table>
     ';
 
   }
